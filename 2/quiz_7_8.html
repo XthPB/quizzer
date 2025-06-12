@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inter House Quiz Competition VII-VIII</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slide {
+            width: 95%;
+            max-width: 1200px;
+            height: 90vh;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: none;
+            animation: slideInRight 0.8s ease-out;
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes zoomIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .title-slide h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            animation: bounceIn 1.2s ease-out;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title-slide h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out 0.5s both;
+            color: #FFD700;
+        }
+
+        .round-title {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            color: #FFD700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.8s ease-out;
+        }
+
+        .round-subtitle {
+            font-size: 2em;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-out 0.3s both;
+            color: #FFA500;
+        }
+
+        .rules-container {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            animation: fadeIn 1s ease-out 0.5s both;
+            text-align: left;
+        }
+
+        .rules-container h3 {
+            color: #FFD700;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .rules-container ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rules-container li {
+            margin: 10px 0;
+            padding-left: 20px;
+            position: relative;
+            font-size: 1.1em;
+            line-height: 1.4;
+        }
+
+        .rules-container li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #00FF7F;
+            font-weight: bold;
+        }
+
+        .question-slide {
+            animation: slideInRight 0.8s ease-out;
+        }
+
+        .question-number {
+            font-size: 1.8em;
+            color: #FFD700;
+            margin-bottom: 20px;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .question-text {
+            font-size: 1.6em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .options-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .three-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .option {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px 20px;
+            border-radius: 15px;
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            font-size: 1.2em;
+            animation: fadeIn 0.8s ease-out both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option:nth-child(1) { animation-delay: 0.6s; }
+        .option:nth-child(2) { animation-delay: 0.7s; }
+        .option:nth-child(3) { animation-delay: 0.8s; }
+        .option:nth-child(4) { animation-delay: 0.9s; }
+
+        .option:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: #FFD700;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .option:hover::before {
+            left: 100%;
+        }
+
+        .visual-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .visual-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            animation: bounceIn 0.8s ease-out;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:hover {
+            background: rgba(255, 215, 0, 0.8);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-size: 1.2em;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .intro-text {
+            font-size: 1.4em;
+            line-height: 1.8;
+            animation: fadeIn 1s ease-out 1s both;
+            margin: 20px 0;
+        }
+
+        .riddle-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            font-size: 1.3em;
+            line-height: 1.6;
+            animation: zoomIn 0.8s ease-out 0.5s both;
+            border-left: 5px solid #FFD700;
+        }
+
+        .spell-word {
+            font-size: 3em;
+            color: #FFD700;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 30px 0;
+            animation: bounceIn 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .logo-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .logo-item {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            animation: bounceIn 0.8s ease-out;
+            font-size: 1.2em;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .logo-item:hover {
+            border-color: #FFD700;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+                width: 98%;
+                height: 95vh;
+            }
+            
+            .title-slide h1 {
+                font-size: 2.5em;
+            }
+            
+            .round-title {
+                font-size: 2.5em;
+            }
+            
+            .options-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">XX</span>
+        </div>
+
+        <!-- Title Slide -->
+        <div class="slide active title-slide">
+            <h1>INTERHOUSE QUIZ</h1>
+            <h1>COMPETITION</h1>
+            <h2>VII-VIII</h2>
+            <div class="intro-text">
+                Let's have a glance at competition.
+            </div>
+        </div>
+
+        <!-- General Rules Slide -->
+        <div class="slide">
+            <h2 class="round-title">Competition Rules</h2>
+            <div class="rules-container">
+                <ul>
+                    <li>The quiz competition will be conducted in 7 rounds.</li>
+                    <li>If there will be any doubt or confusion – Quiz master's decision will be respected.</li>
+                    <li>For each round there will be different set of rules. So, you all have to respond accordingly.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Round 1 Title -->
+        <div class="slide">
+            <h1 class="round-title">ROUND-1</h1>
+            <h2 class="round-subtitle">(Hunky Brain)</h2>
+        </div>
+
+        <!-- Round 1 Rules -->
+        <div class="slide">
+            <h2 class="round-title">Round 1 Rules</h2>
+            <div class="rules-container">
+                <ul>
+                    <li>Every Team gets a question to answer in 20 seconds. For each correct answer team will get 10 marks.</li>
+                    <li>Only one answer from one group will be entertained.</li>
+                    <li>There is no negative point for incorrect answer.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Round 1 Questions -->
+        <div class="slide question-slide">
+            <div class="question-number">Question 1</div>
+            <div class="question-text">Govind Sagar Lake is in which district of Himachal Pradesh:</div>
+            <div class="options-container">
+                <div class="option">Mandi</div>
+                <div class="option">Bilaspur</div>
+                <div class="option">Kullu</div>
+                <div class="option">Hamirpur</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-number">Question 2</div>
+            <div class="question-text">Kibber wild life sanctuary is in which district of Himachal Pradesh:</div>
+            <div class="options-container">
+                <div class="option">Kullu</div>
+                <div class="option">Mandi</div>
+                <div class="option">Lahul Spiti</div>
+                <div class="option">Kinnaur</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-number">Question 3</div>
+            <div class="question-text">Pong Dam Lake is in which district of Himachal Pradesh:</div>
+            <div class="options-container">
+                <div class="option">Kullu</div>
+                <div class="option">Solan</div>
+                <div class="option">Hamirpur</div>
+                <div class="option">Kangra</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-number">Question 4</div>
+            <div class="question-text">Tirthan wild life sanctuary is in which district of Himachal Pradesh:</div>
+            <div class="options-container">
+                <div class="option">Mandi</div>
+                <div class="option">Kangra</div>
+                <div class="option">Hamirpur</div>
+                <div class="option">Kullu</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-number">Question 5</div>
+            <div class="question-text">Rana Sanga was ruler of:</div>
+            <div class="options-container">
+                <div class="option">1. Chittor</div>
+                <div class="option">2. Jaisalmer</div>
+                <div class="option">3. Udaipur</div>
+                <div class="option">4. Jaipur</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-number">Question 6</div>
+            <div class="question-text">Second battle of Panipat Was fought between:</div>
+            <div class="options-container">
+                <div class="option">1. Hemu and Humayun</div>
+                <div class="option">2. Hemu and Bairam Khan</div>
+                <div class="option">3. Rana Sanga and Akbar</div>
+                <div class="option">4. None of the above</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-number">Question 7</div>
+            <div class="question-text">The Iqta system was introduced by:</div>
+            <div class="options-container">
+                <div class="option">1. Qutab-ud-din</div>
+                <div class="option">2. Iitmush</div>
+                <div class="option">3. Razia</div>
+                <div class="option">4. None of the above</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-number">Question 8</div>
+            <div class="question-text">The Zakat was tax which was paid by:</div>
+            <div class="three-options">
+                <div class="option">1. Hindu</div>
+                <div class="option">2. Muslim</div>
+                <div class="option">3. All subjects</div>
+            </div>
+        </div>
+
+        <!-- Round 2 Title -->
+        <div class="slide">
+            <h1 class="round-title">ROUND-2</h1>
+            <h2 class="round-subtitle">(General Round)</h2>
+        </div>
+
+        <!-- Round 2 Rules -->
+        <div class="slide">
+            <h2 class="round-title">Round 2 Rules</h2>
+            <div class="rules-container">
+                <ul>
+                    <li>Each team will be asked question of 10 marks. They will be given 30 seconds for each question.</li>
+                    <li>If the allotted team is unable to answer the question, then the question will pass on to the subsequent teams.</li>
+                    <li>Subsequent teams will be given 10 seconds to answer & will be awarded 5 marks for each correct answer.</li>
+                    <li>No negative marks for incorrect answer.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Round 2 Questions -->
+        <div class="slide">
+            <h2 class="round-title">National Parks</h2>
+            <div class="question-text">In which state of India is Jim Corbett National Park?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">National Parks</h2>
+            <div class="question-text">In which state of India is Bandipur National park?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">National Parks</h2>
+            <div class="question-text">In which state of India is Kaziranga National park?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">National Parks</h2>
+            <div class="question-text">In which state of India is Gir Forest National park?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Give full form of:</h2>
+            <div class="question-text">NRI</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Give full form of:</h2>
+            <div class="question-text">NTPC</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Give full form of:</h2>
+            <div class="question-text">ONGC</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Give full form of:</h2>
+            <div class="question-text">EPF</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Famous Authors</h2>
+            <div class="question-text">Who is writer of "Train to Pakistan"?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Famous Authors</h2>
+            <div class="question-text">Who is writer of "My Experiments With Truth"?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Famous Authors</h2>
+            <div class="question-text">Who is writer of "Geetanjali"?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Famous Authors</h2>
+            <div class="question-text">Who is writer of "Five Point Someone"?</div>
+        </div>
+
+        <!-- Round 3 Title -->
+        <div class="slide">
+            <h1 class="round-title">ROUND-3</h1>
+            <h2 class="round-subtitle">(Brain Teaser Round)</h2>
+        </div>
+
+        <!-- Round 3 Rules -->
+        <div class="slide">
+            <h2 class="round-title">Round 3 Rules</h2>
+            <div class="rules-container">
+                <ul>
+                    <li>Each team will be asked question of 10 marks. They will be given 45 seconds for each question.</li>
+                    <li>If unable to answer correctly, then the team would lose 5 marks.</li>
+                    <li>This round is not passing round.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Round 3 Questions -->
+        <div class="slide question-slide">
+            <div class="question-text">If 'PENCIL' is coded as 'OCDMFK', how is 'BRUSH' coded?</div>
+            <div class="options-container">
+                <div class="option">a) AQTVG</div>
+                <div class="option">b) AQTRG</div>
+                <div class="option">c) CQTSG</div>
+                <div class="option">d) ASVGU</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">In a certain language, 'MATHEMATICS' is written as 'TAMCIHTAME'. How is 'COMPUTER' written in that code?</div>
+            <div class="options-container">
+                <div class="option">a) RETUPMOC</div>
+                <div class="option">b) ERTUPMOC</div>
+                <div class="option">c) REPUTMOC</div>
+                <div class="option">d) RUTEMPUC</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">What comes next in the sequence: JFMAMJJASON_?</div>
+            <div class="options-container">
+                <div class="option">a) D</div>
+                <div class="option">b) J</div>
+                <div class="option">c) M</div>
+                <div class="option">d) F</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">Arrange these words in alphabetical order and tick the one that comes last:</div>
+            <div class="options-container">
+                <div class="option">1. Abandon</div>
+                <div class="option">2. Actuate</div>
+                <div class="option">3. Accumulate</div>
+                <div class="option">4. Acquit</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">What is the primary function of chlorophyll in plants?</div>
+            <div class="options-container">
+                <div class="option">a) To absorb sunlight for photosynthesis</div>
+                <div class="option">b) To transport water from roots to leaves</div>
+                <div class="option">c) To protect plants from pests</div>
+                <div class="option">d) To produce fruit</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">What is the role of the mitochondria in animal cells?</div>
+            <div class="options-container">
+                <div class="option">a) To perform photosynthesis</div>
+                <div class="option">b) To digest food particles</div>
+                <div class="option">c) To convert glucose into energy</div>
+                <div class="option">d) To store DNA</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">What are the products of anaerobic respiration in yeast?</div>
+            <div class="options-container">
+                <div class="option">a) Alcohol and Carbon dioxide</div>
+                <div class="option">b) Carbon dioxide and glucose</div>
+                <div class="option">c) Oxygen and alcohol</div>
+                <div class="option">d) Glucose and oxygen</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">Which of the following is a physical change?</div>
+            <div class="options-container">
+                <div class="option">a) Rusting of iron</div>
+                <div class="option">b) Burning of wood</div>
+                <div class="option">c) Melting of ice</div>
+                <div class="option">d) Souring of milk</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">What happens when vinegar reacts with baking soda?</div>
+            <div class="options-container">
+                <div class="option">a) Formation of water</div>
+                <div class="option">b) Formation of carbon dioxide</div>
+                <div class="option">c) Formation of hydrogen gas</div>
+                <div class="option">d) Formation of oxygen gas</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">What is the process of depositing a layer of zinc on iron called?</div>
+            <div class="options-container">
+                <div class="option">a) Painting</div>
+                <div class="option">b) Greasing</div>
+                <div class="option">c) Galvanization</div>
+                <div class="option">d) Rusting</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">The tiny air sacs in the lungs where the exchange of gases takes place are called:</div>
+            <div class="options-container">
+                <div class="option">a) Bronchi</div>
+                <div class="option">b) Alveoli</div>
+                <div class="option">c) Bronchioles</div>
+                <div class="option">d) Trachea</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">The flap that covers the trachea during swallowing is called:</div>
+            <div class="options-container">
+                <div class="option">a) Larynx</div>
+                <div class="option">b) Epiglottis</div>
+                <div class="option">c) Pharynx</div>
+                <div class="option">d) Bronchi</div>
+            </div>
+        </div>
+
+        <!-- Riddle Questions -->
+        <div class="slide">
+            <h2 class="round-title">Brain Teasers & Riddles</h2>
+            <div class="riddle-box">
+                What has cities, but no houses; forests, but no trees; and water, but no fish?
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Brain Teasers & Riddles</h2>
+            <div class="riddle-box">
+                No matter how little or how much you use me, you change me every month. What am I?
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Brain Teasers & Riddles</h2>
+            <div class="riddle-box">
+                Turn me on my side, and I am everything. Cut me in half, and I am nothing. What am I?
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Brain Teasers & Riddles</h2>
+            <div class="riddle-box">
+                If you have me, you want to share me. If you share me, you haven't got me. What am I?
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">What comes next in the pattern: Z, X, V, T, ...?</div>
+            <div class="options-container">
+                <div class="option">a) S</div>
+                <div class="option">b) R</div>
+                <div class="option">c) Q</div>
+                <div class="option">d) P</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">The day before two days after the day before tomorrow is Saturday. What day is it today?</div>
+            <div class="options-container">
+                <div class="option">a) Friday</div>
+                <div class="option">b) Thursday</div>
+                <div class="option">c) Wednesday</div>
+                <div class="option">d) Tuesday</div>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Brain Teasers & Riddles</h2>
+            <div class="riddle-box">
+                You have 3 stoves: a gas stove, a wood stove, and a coal stove, but only one match. Which do you light first?
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">If the day after tomorrow is Sunday, what day was it yesterday?</div>
+            <div class="options-container">
+                <div class="option">a) Thursday</div>
+                <div class="option">b) Friday</div>
+                <div class="option">c) Wednesday</div>
+                <div class="option">d) Saturday</div>
+            </div>
+        </div>
+
+        <!-- Quick Fire Questions -->
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">What is the capital of France?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">Which epic is supposed to have happened before - Mahabharata or Ramayana?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">Who has the authority to issue currency in India?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">Garo tribes are found in which state of India?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">Who was the first Indian to win an individual Olympic gold medal?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">Which Indian state is known as the "Spice Garden of India"?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">Who was the first President of the United States?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Quick Questions</h2>
+            <div class="question-text">B.C. Raj Trophy is associated with which sport?</div>
+        </div>
+
+        <!-- Round 4 Title -->
+        <div class="slide">
+            <h1 class="round-title">ROUND-4</h1>
+            <h2 class="round-subtitle">(Visual Round)</h2>
+        </div>
+
+        <!-- Round 4 Rules -->
+        <div class="slide">
+            <h2 class="round-title">Round 4 Rules</h2>
+            <div class="rules-container">
+                <ul>
+                    <li>Every team will be asked to identify a personality.</li>
+                    <li>20 marks will be awarded for the correct answer, if answered in 10 seconds.</li>
+                    <li>10 marks will be awarded for the correct answer if answered in 20 seconds.</li>
+                    <li>It is not a passing round and no negative marking.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Logo Identification -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Logo</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 400px; width: 600px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
+                    <img src="logo1.jpg" alt="Logo 1" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add logo1.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Celebrity/Personality Identification -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Personality</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 400px; width: 300px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
+                    <img src="personality1.jpg" alt="Personality 1" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add personality1.jpg image here<br>
+                        <small>(Maithili Raj)</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tagline/Slogan Questions -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Brand</h2>
+            <div class="question-text">"Aisi Azadi Aur Kahan"</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Identify the Brand</h2>
+            <div class="question-text">"Be 100% Sure"</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Identify the Brand</h2>
+            <div class="question-text">"Fights Germs For 12 Hours"</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Identify the Movie</h2>
+            <div class="question-text">"Dum Laga Ke Haisha"</div>
+        </div>
+
+        <!-- Round 5 Title -->
+        <div class="slide">
+            <h1 class="round-title">ROUND-5</h1>
+            <h2 class="round-subtitle">(General Round - Buzzer)</h2>
+        </div>
+
+        <!-- Round 5 Rules -->
+        <div class="slide">
+            <h2 class="round-title">Round 5 Rules - Buzzer Round</h2>
+            <div class="rules-container">
+                <ul>
+                    <li>Team pressing the buzzer first will be given the chance to answer.</li>
+                    <li>15 marks will be awarded for each correct answer & 5 marks will be deducted for each incorrect answer.</li>
+                    <li>Team will be given 60 seconds for each question.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Round 5 Questions -->
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">Whose death coincided with the launch of the non-cooperation movement in 1920?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">Which freedom fighter is famously known as the "Iron Man of India"?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">Who was the first woman to become the President of the Indian National Congress?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">Who wrote the famous patriotic song "Vande Mataram"?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">Who is known as the "Lion of Punjab" for his contributions to the freedom struggle?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">Who was a lawyer, social reformer, and the architect of the Indian Constitution?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Science</h2>
+            <div class="question-text">Which gas do plants absorb from the atmosphere during photosynthesis?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">What is the famous incident where the Jallianwala Bagh massacre occurred?</div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">History & Freedom Struggle</h2>
+            <div class="question-text">Which freedom fighter is known for his famous speech "Tryst with Destiny"?</div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">Who is district head of Medical Services?</div>
+            <div class="options-container">
+                <div class="option">(A) DMO</div>
+                <div class="option">(B) CMO</div>
+                <div class="option">(C) SMO</div>
+                <div class="option">(D) None</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">Which is birth place of Virbhadra Singh?</div>
+            <div class="options-container">
+                <div class="option">(A) Hamirpur</div>
+                <div class="option">(B) Sarahan</div>
+                <div class="option">(C) Mehatpur</div>
+                <div class="option">(D) Samirpur</div>
+            </div>
+        </div>
+
+        <div class="slide question-slide">
+            <div class="question-text">Bandli sanctuary located in—</div>
+            <div class="options-container">
+                <div class="option">(A) Una</div>
+                <div class="option">(B) Mandi</div>
+                <div class="option">(C) Kullu</div>
+                <div class="option">(D) None</div>
+            </div>
+        </div>
+
+        <!-- Round 6 Title -->
+        <div class="slide">
+            <h1 class="round-title">ROUND-6</h1>
+            <h2 class="round-subtitle">(Spell-bee Round)</h2>
+        </div>
+
+        <!-- Round 6 Rules -->
+        <div class="slide">
+            <h2 class="round-title">Round 6 Rules</h2>
+            <div class="rules-container">
+                <ul>
+                    <li>This will be one-on-one round. Each participant will get a chance to spell the word. For each correct answer the team will get 5 marks.</li>
+                    <li>No negative marking.</li>
+                    <li>Time 30 seconds.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slide">
+            <h2 class="round-title">Spell the Word</h2>
+            <div class="spell-word">Words will be announced</div>
+        </div>
+
+        <!-- Thank You Slide -->
+        <div class="slide">
+            <h1 class="round-title">Thank You!</h1>
+            <h2 class="round-subtitle">Best of Luck to All Teams!</h2>
+            <div class="intro-text">
+                May the best team win! 🏆
+            </div>
+        </div>
+
+        <div class="controls">
+            <button class="btn" onclick="previousSlide()">◀ Previous</button>
+            <button class="btn" onclick="nextSlide()">Next ▶</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('totalSlides').textContent = totalSlides;
+
+        function showSlide(index) {
+            slides.forEach(slide => {
+                slide.classList.remove('active');
+                slide.style.animation = 'none';
+            });
+            
+            slides[index].classList.add('active');
+            
+            // Add different animations for different directions
+            if (index > currentSlideIndex) {
+                slides[index].style.animation = 'slideInRight 0.8s ease-out';
+            } else {
+                slides[index].style.animation = 'slideInLeft 0.8s ease-out';
+            }
+            
+            document.getElementById('currentSlide').textContent = index + 1;
+        }
+
+        function nextSlide() {
+            if (currentSlideIndex < totalSlides - 1) {
+                currentSlideIndex++;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlideIndex > 0) {
+                currentSlideIndex--;
+                showSlide(currentSlideIndex);
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowRight' || event.key === ' ') {
+                nextSlide();
+            } else if (event.key === 'ArrowLeft') {
+                previousSlide();
+            } else if (event.key === 'Escape') {
+                // Toggle fullscreen
+                if (document.fullscreenElement) {
+                    document.exitFullscreen();
+                } else {
+                    document.documentElement.requestFullscreen();
+                }
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(event) {
+            touchStartX = event.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(event) {
+            touchEndX = event.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                nextSlide();
+            }
+            if (touchEndX > touchStartX + 50) {
+                previousSlide();
+            }
+        }
+
+        // Auto-update slide counter on load
+        window.addEventListener('load', function() {
+            document.getElementById('totalSlides').textContent = totalSlides;
+        });
+    </script>
+</body>
+</html>
