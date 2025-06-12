@@ -123,7 +123,7 @@
         }
 
         .rules-container {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.9);
             padding: 25px;
             border-radius: 15px;
             margin: 20px 0;
@@ -132,9 +132,10 @@
         }
 
         .rules-container h3 {
-            color: #FFD700;
+            color: black;
             margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: 2em;
+            font-weight: bold;
         }
 
         .rules-container ul {
@@ -143,19 +144,22 @@
         }
 
         .rules-container li {
-            margin: 10px 0;
-            padding-left: 20px;
+            margin: 15px 0;
+            padding-left: 30px;
             position: relative;
-            font-size: 1.1em;
+            font-size: 1.6em;
             line-height: 1.4;
+            color: black;
+            font-weight: bold;
         }
 
         .rules-container li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #00FF7F;
+            color: #00AA00;
             font-weight: bold;
+            font-size: 1.2em;
         }
 
         .question-slide {
@@ -170,13 +174,15 @@
         }
 
         .question-text {
-            font-size: 1.6em;
+            font-size: 2.2em;
             margin-bottom: 30px;
             line-height: 1.6;
             animation: fadeIn 0.8s ease-out 0.4s both;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
+            color: black;
+            font-weight: bold;
         }
 
         .options-container {
@@ -188,16 +194,18 @@
         }
 
         .option {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.9);
             padding: 15px 20px;
             border-radius: 15px;
             border: 2px solid transparent;
             transition: all 0.4s ease;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.8em;
             animation: fadeIn 0.8s ease-out both;
             position: relative;
             overflow: hidden;
+            color: black;
+            font-weight: bold;
         }
 
         .option:nth-child(1) { animation-delay: 0.6s; }
@@ -394,11 +402,16 @@
 
         <!-- Title Slide -->
         <div class="slide active title-slide">
-            <h1>INTERHOUSE QUIZ</h1>
-            <h1>COMPETITION</h1>
-            <h2>IX-X</h2>
-            <div class="intro-text">
-                Let's have a glance at competition.
+            <div class="visual-content">
+                <div class="visual-item" style="height: 600px; width: 800px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="opening_page.jpg" alt="Opening Page" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.5em;">
+                        <h1>INTERHOUSE QUIZ</h1>
+                        <h1>COMPETITION</h1>
+                        <h2>IX-X</h2>
+                        <div class="intro-text">Let's have a glance at competition.</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -770,8 +783,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Country Flag</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 700px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="flag1.jpg" alt="Flag 1" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="flag1.jpg" alt="Flag 1" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add flag1.jpg image here
                     </div>
@@ -782,8 +795,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Country Flag</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 700px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="flag2.jpg" alt="Flag 2" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="flag2.jpg" alt="Flag 2" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add flag2.jpg image here
                     </div>
@@ -794,8 +807,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Country Flag</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 700px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="flag3.jpg" alt="Flag 3" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="flag3.jpg" alt="Flag 3" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add flag3.jpg image here
                     </div>
@@ -806,8 +819,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Country Flag</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 700px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="flag4.jpg" alt="Flag 4" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="flag4.jpg" alt="Flag 4" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add flag4.jpg image here
                     </div>
@@ -819,8 +832,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the CEO</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="ceo1.jpg" alt="CEO 1" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="ceo1.jpg" alt="CEO 1" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add ceo1.jpg image here
                     </div>
@@ -831,8 +844,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the CEO</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="ceo2.jpg" alt="CEO 2" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="ceo2.jpg" alt="CEO 2" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add ceo2.jpg image here
                     </div>
@@ -843,8 +856,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the CEO</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="ceo3.jpg" alt="CEO 3" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="ceo3.jpg" alt="CEO 3" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add ceo3.jpg image here
                     </div>
@@ -855,8 +868,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the CEO</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="ceo4.jpg" alt="CEO 4" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="ceo4.jpg" alt="CEO 4" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add ceo4.jpg image here
                     </div>
@@ -868,8 +881,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Sports Personality</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="sports1.jpg" alt="Sports Personality 1" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports1.jpg" alt="Sports Personality 1" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add sports1.jpg image here
                     </div>
@@ -880,8 +893,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Sports Personality</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="sports2.jpg" alt="Sports Personality 2" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports2.jpg" alt="Sports Personality 2" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add sports2.jpg image here
                     </div>
@@ -892,8 +905,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Sports Personality</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="sports3.jpg" alt="Sports Personality 3" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports3.jpg" alt="Sports Personality 3" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add sports3.jpg image here
                     </div>
@@ -904,8 +917,8 @@
         <div class="slide">
             <h2 class="round-title">Identify the Sports Personality</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 500px; width: 400px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="sports4.jpg" alt="Sports Personality 4" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports4.jpg" alt="Sports Personality 4" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add sports4.jpg image here
                     </div>

@@ -123,7 +123,7 @@
         }
 
         .rules-container {
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(255, 255, 255, 0.9);
             padding: 25px;
             border-radius: 15px;
             margin: 20px 0;
@@ -132,9 +132,10 @@
         }
 
         .rules-container h3 {
-            color: #FFD700;
+            color: black;
             margin-bottom: 15px;
-            font-size: 1.5em;
+            font-size: 2em;
+            font-weight: bold;
         }
 
         .rules-container ul {
@@ -143,19 +144,22 @@
         }
 
         .rules-container li {
-            margin: 10px 0;
-            padding-left: 20px;
+            margin: 15px 0;
+            padding-left: 30px;
             position: relative;
-            font-size: 1.1em;
+            font-size: 1.6em;
             line-height: 1.4;
+            color: black;
+            font-weight: bold;
         }
 
         .rules-container li:before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #00FF7F;
+            color: #00AA00;
             font-weight: bold;
+            font-size: 1.2em;
         }
 
         .question-slide {
@@ -170,13 +174,15 @@
         }
 
         .question-text {
-            font-size: 1.6em;
+            font-size: 2.2em;
             margin-bottom: 30px;
             line-height: 1.6;
             animation: fadeIn 0.8s ease-out 0.4s both;
             padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 10px;
+            color: black;
+            font-weight: bold;
         }
 
         .options-container {
@@ -197,16 +203,18 @@
         }
 
         .option {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.9);
             padding: 15px 20px;
             border-radius: 15px;
             border: 2px solid transparent;
             transition: all 0.4s ease;
             cursor: pointer;
-            font-size: 1.2em;
+            font-size: 1.8em;
             animation: fadeIn 0.8s ease-out both;
             position: relative;
             overflow: hidden;
+            color: black;
+            font-weight: bold;
         }
 
         .option:nth-child(1) { animation-delay: 0.6s; }
@@ -383,11 +391,16 @@
 
         <!-- Title Slide -->
         <div class="slide active title-slide">
-            <h1>INTERHOUSE QUIZ</h1>
-            <h1>COMPETITION</h1>
-            <h2>VII-VIII</h2>
-            <div class="intro-text">
-                Let's have a glance at competition.
+            <div class="visual-content">
+                <div class="visual-item" style="height: 600px; width: 800px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="opening_page.jpg" alt="Opening Page" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.5em;">
+                        <h1>INTERHOUSE QUIZ</h1>
+                        <h1>COMPETITION</h1>
+                        <h2>VII-VIII</h2>
+                        <div class="intro-text">Let's have a glance at competition.</div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -854,12 +867,25 @@
             </div>
         </div>
 
-        <!-- Logo Identification -->
+        <!-- Logo Opening Round -->
+        <div class="slide">
+            <div class="visual-content">
+                <div class="visual-item" style="height: 600px; width: 800px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="r4_opening_logo.jpg" alt="Logo Round Opening" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center;">
+                        <h2 class="round-title">Logo Identification</h2>
+                        <div class="intro-text">Identify the following logos</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo 1 -->
         <div class="slide">
             <h2 class="round-title">Identify the Logo</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 400px; width: 600px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="logo1.jpg" alt="Logo 1" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="logo1.jpg" alt="Logo 1" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
                         Add logo1.jpg image here
                     </div>
@@ -867,15 +893,118 @@
             </div>
         </div>
 
-        <!-- Celebrity/Personality Identification -->
+        <!-- Logo 2 -->
         <div class="slide">
-            <h2 class="round-title">Identify the Personality</h2>
+            <h2 class="round-title">Identify the Logo</h2>
             <div class="visual-content">
-                <div class="visual-item" style="height: 400px; width: 300px; background: rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; border: 2px dashed #FFD700;">
-                    <img src="personality1.jpg" alt="Personality 1" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="logo2.jpg" alt="Logo 2" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
                     <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
-                        Add personality1.jpg image here<br>
-                        <small>(Maithili Raj)</small>
+                        Add logo2.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo 3 -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Logo</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="logo3.jpg" alt="Logo 3" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add logo3.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logo 4 -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Logo</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="logo4.jpg" alt="Logo 4" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add logo4.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sports Opening Round -->
+        <div class="slide">
+            <div class="visual-content">
+                <div class="visual-item" style="height: 600px; width: 800px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="r4_opening_sports.jpg" alt="Sports Round Opening" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center;">
+                        <h2 class="round-title">Sports Personality Identification</h2>
+                        <div class="intro-text">Identify the following sports personalities</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sports Personality 1 -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Sports Personality</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports1.jpg" alt="Sports Personality 1" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add sports1.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sports Personality 2 -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Sports Personality</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports2.jpg" alt="Sports Personality 2" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add sports2.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sports Personality 3 -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Sports Personality</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports3.jpg" alt="Sports Personality 3" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add sports3.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sports Personality 4 -->
+        <div class="slide">
+            <h2 class="round-title">Identify the Sports Personality</h2>
+            <div class="visual-content">
+                <div class="visual-item" style="height: 900px; width: 1100px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="sports4.jpg" alt="Sports Personality 4" style="width: 1000px; height: 800px; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center; color: #FFD700; font-size: 1.2em;">
+                        Add sports4.jpg image here
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tagline/Slogan Opening -->
+        <div class="slide">
+            <div class="visual-content">
+                <div class="visual-item" style="height: 600px; width: 800px; background: none; display: flex; align-items: center; justify-content: center; border: none; padding: 0;">
+                    <img src="tagline.jpg" alt="Tagline Round" style="max-width: 100%; max-height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display: none; text-align: center;">
+                        <h2 class="round-title">Tagline & Slogan Identification</h2>
+                        <div class="intro-text">Identify the brand or movie from the tagline</div>
                     </div>
                 </div>
             </div>
@@ -883,22 +1012,18 @@
 
         <!-- Tagline/Slogan Questions -->
         <div class="slide">
-            <h2 class="round-title">Identify the Brand</h2>
             <div class="question-text">"Aisi Azadi Aur Kahan"</div>
         </div>
 
         <div class="slide">
-            <h2 class="round-title">Identify the Brand</h2>
             <div class="question-text">"Be 100% Sure"</div>
         </div>
 
         <div class="slide">
-            <h2 class="round-title">Identify the Brand</h2>
             <div class="question-text">"Fights Germs For 12 Hours"</div>
         </div>
 
         <div class="slide">
-            <h2 class="round-title">Identify the Movie</h2>
             <div class="question-text">"Dum Laga Ke Haisha"</div>
         </div>
 
